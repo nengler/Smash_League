@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/standings.css" />
+    <link rel="stylesheet" type="text/css" href="css/nav.css" />
+    <script type="text/javascript" src="js/standings.js"></script>
+  </head>
+  <body onload="standings()">
+    <nav>
+      <img
+        src="img/Smash_Ball.png"
+        value="10"
+        class="smash-ball-img"
+        id="temp"
+        alt=""
+      />
+      <a href="#" class="navbar-item active">Standings</a>
+      <a href="Schedule.html" class="navbar-item">Schedule</a>
+    </nav>
+
+    <div class="container">
+      <div class="header">
+        Smash league Standings
+      </div>
+      <div class="standings">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Name</th>
+              <th>Wins</th>
+              <th>Lose</th>
+              <th>Map Record</th>
+            </tr>
+          </thead>
+          <tbody id="standings-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
