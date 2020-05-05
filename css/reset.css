@@ -145,6 +145,23 @@ body {
   background-color: white;
 }
 
+.smash-ball-img {
+  -webkit-animation: rotation 4s linear infinite;
+  -moz-animation: rotation 4s linear infinite;
+  animation: rotation 4s infinite linear;
+  width: 3rem;
+  height: 3rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 @media (max-width: 991.98px) {
   .container {
     max-width: 85%;

@@ -8,46 +8,51 @@ class player {
 }
 
 const players = [
-  new player("Nathan", 2, 2, "7-6"),
-  new player("Sun_ssb", 3, 0, "9-5"),
-  new player("GageBoss", 3, 0, "9-1"),
-  new player("Scisco", 4, 0, "12-3"),
-  new player("GuardianZangi", 3, 1, "11-5"),
-  new player("RuntySloth", 2, 2, "9-7"),
-  new player("ToxicKills", 0, 4, "0-12"),
-  new player("Marow", 2, 2, "8-7"),
-  new player("Dragontipper", 3, 1, "10-6"),
-  new player("Jacob", 0, 3, "1-9"),
-  new player("ducklenuts", 0, 4, "4-12"),
-  new player("MrDarthMatt", 0, 3, "2-9"),
-  new player("Irid", 2, 2, "9-8"),
+  new player("Nathan", 6, 2, "19-8"),
+  new player("Sun_ssb", 7, 0, "20-6"),
+  new player("GageBoss", 6, 1, "18-4"),
+  new player("Scisco", 7, 0, "21-5"),
+  new player("GuardianZangi", 6, 1, "20-6"),
+  new player("RuntySloth", 4, 4, "16-14"),
+  new player("ToxicKills", 0, 8, "0-24"),
+  new player("Marow", 3, 4, "11-14"),
+  new player("Dragontipper", 4, 4, "16-15"),
+  new player("Jacob", 1, 6, "6-18"),
+  new player("ducklenuts", 1, 6, "9-19"),
+  new player("MrDarthMatt", 0, 7, "3-21"),
+  new player("Irid", 3, 5, "14-19"),
 ];
 
 function standings() {
-  console.log(players);
   for (let i = 0; i < players.length; i++) {
     let highestWins = players[i].wins;
     let highestWinPercentageArr = players[i].mapRecord.split("-");
     let highestWinPercentage =
-      highestWinPercentageArr[0] /
-      (highestWinPercentageArr[0] + highestWinPercentageArr[1]);
+      parseInt(highestWinPercentageArr[0]) /
+      (parseInt(highestWinPercentageArr[0]) +
+        parseInt(highestWinPercentageArr[1]));
     let highestWinsIndex = i;
     let shouldSwap = false;
-    for (let j = i; j < players.length; j++) {
+
+    for (let j = i + 1; j < players.length; j++) {
+      let iteratedPlayerWinPerAr = players[j].mapRecord.split("-");
+      let iteratedPlayerWinPer =
+        parseInt(iteratedPlayerWinPerAr[0]) /
+        (parseInt(iteratedPlayerWinPerAr[0]) +
+          parseInt(iteratedPlayerWinPerAr[1]));
+
       if (players[j].wins > highestWins) {
         highestWins = players[j].wins;
         highestWinsIndex = j;
         shouldSwap = true;
-      } else if (players[j].wins === highestWins) {
-        let iteratedPlayerWinPerAr = players[j].mapRecord.split("-");
-        let iteratedPlayerWinPer =
-          iteratedPlayerWinPerAr[0] /
-          (iteratedPlayerWinPerAr[0] + iteratedPlayerWinPerAr[1]);
-        if (iteratedPlayerWinPer > highestWinPercentage) {
-          highestWinPercentage = iteratedPlayerWinPer;
-          highestWinsIndex = j;
-          shouldSwap = true;
-        }
+        highestWinPercentage = iteratedPlayerWinPer;
+      } else if (
+        players[j].wins === highestWins &&
+        iteratedPlayerWinPer > highestWinPercentage
+      ) {
+        highestWinPercentage = iteratedPlayerWinPer;
+        highestWinsIndex = j;
+        shouldSwap = true;
       }
     }
     if (shouldSwap) {
@@ -76,6 +81,7 @@ function displayStandings(players) {
   }
 }
 
+/*
 window.setInterval(function () {
   rotateImage();
 }, 300);
@@ -83,14 +89,8 @@ window.setInterval(function () {
 function rotateImage() {
   let smashImg = document.getElementById("temp");
   let angle = parseInt(smashImg.attributes[1].value) + 20;
-  /*
-  if (angle > 370) {
-    angle = -10;
-  }*/
+
   smashImg.style.transform = "rotate(" + angle + "deg)";
   smashImg.attributes[1].value = angle.toString();
-  /*
-  if (angle === 0) {
-    smashImg.style.transform = "rotate(180deg)";
-  }*/
-}
+
+}*/
